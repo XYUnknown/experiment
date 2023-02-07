@@ -34,7 +34,7 @@ impl PartialOrd for Entry {
     }
 
     fn lt(&self, other: &Self) -> bool {
-        self.time < other.time
+        self.time > other.time
     }
 
     fn le(&self, other: &Self) -> bool {
@@ -42,11 +42,11 @@ impl PartialOrd for Entry {
     }
 
     fn gt(&self, other: &Self) -> bool {
-        self.time > other.time
+        self.time < other.time
     }
 
     fn ge(&self, other: &Self) -> bool {
-        self.time >= other.time
+        self.time <= other.time
     }
 }
 
@@ -55,32 +55,6 @@ impl Ord for Entry {
     /* this is manually changed for builing a min-heap with std BinaryHeap */
     fn cmp(&self, other: &Self) -> std::cmp::Ordering {
         self.partial_cmp(other).unwrap()
-    }
-
-    fn max(self, other: Self) -> Self {
-        if self.time > other.time {
-            self
-        } else {
-            other
-        }
-    }
-
-    fn min(self, other: Self) -> Self {
-        if self.time < other.time {
-            self
-        } else {
-            other
-        }
-    }
-
-    fn clamp(self, min: Self, max: Self) -> Self {
-        if self.time < min.time {
-            min
-        } else if self.time > max.time {
-            max
-        } else {
-            self
-        }
     }
 }
 
@@ -131,7 +105,7 @@ mod tests {
     fn lt_works() {
         let e1 = Entry::new("Hello World!".to_string(), Instant::now() + Duration::new(1, 0));
         let e2 = Entry::new("Goodbye World!".to_string(), Instant::now() + Duration::new(3, 0));
-        assert!(e1 < e2);
+        assert!(e1 > e2);
     }
 
     #[test]
