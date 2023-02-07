@@ -104,7 +104,7 @@ impl ReadyReminderServer {
         self.entries.push(Entry::new(content, ready_at));
     }
 
-    pub fn exactEvent(&mut self) -> Option<Entry> {
+    pub fn extractEvent(&mut self) -> Option<Entry> {
         let first = self.entries.peek();
         match first {
             Some(entry) => {
