@@ -2,6 +2,9 @@ use std::time::Instant;
 use std::collections::BinaryHeap;
 use std::cmp::Ordering;
 
+/**
+ * An event that will become ready at some time in the future.
+ */
 #[derive(Eq, PartialEq, Clone, Debug)]
 pub struct Entry {
     content: String,
@@ -81,6 +84,11 @@ impl Ord for Entry {
     }
 }
 
+/**
+ * A server that stores events that will become ready at some time in the future.
+ * Events can be sumbit to the server, and the server can be queried to see if
+ * any events are ready.
+ */
 pub struct ReadyReminderServer {
     entries: BinaryHeap<Entry>
 }
