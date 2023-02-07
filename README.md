@@ -2,7 +2,8 @@
 This repository is prepared for evaluating the effort to refactor an application that runs on a single nodes into an application that runs on multiple nodes.
 
 ## Getting Started
-- Cloning the repository into your own machine.
+- Forking the repository.
+- Cloning the forked repository into your own machine.
 - Running all tests: `cargo test`
     - You should see the following output:
     ```
